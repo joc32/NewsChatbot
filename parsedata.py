@@ -17,11 +17,12 @@ auth.set_access_token(at, ats)
 # Creation of the actual interface, using authentication
 # The script waits in case the API is overloaded with requests. 
 api = tweepy.API(auth, wait_on_rate_limit=True)
- 
+
+max_tweets=500 
 
 #list of 10 articles that are grabbed from Twitter. With specific filters. 
-query = 'https://twitter.com/cnnbrk/status/1006473764018835457 -filter:videos -filter:retweets -filter:images'
-query1 = 'https://twitter.com/cnnbrk/status/1006708707554676736 -filter:videos -filter:retweets -filter:images'
+query = 'https://twitter.com/CNN/status/1008013167140753413 -filter:videos -filter:retweets -filter:images'
+query1 = 'https://twitter.com/FoxNews/status/1007597853802487808 -filter:videos -filter:retweets -filter:images'
 query2 = 'https://twitter.com/cnnbrk/status/1006473764018835457 -filter:videos -filter:retweets -filter:images'
 query3 = 'https://twitter.com/cnnbrk/status/1006473156868091904 -filter:videos -filter:retweets -filter:images'
 query4 = 'https://twitter.com/cnnbrk/status/1006454182596042752 -filter:videos -filter:retweets -filter:images'
@@ -40,15 +41,13 @@ query_list = [query,query1,query2,query3,query4,query5,query6,query7,query8,quer
 
 #Loop that calls the API call, opens a file, puts the file into a csv writer, and writes the appropriate data. 
 for index in range(0,10):
-	searched_tweets = [status for status in tweepy.Cursor(api.search, q=query_list[index],lang='en').items(max_tweets)]
+	searched_tweets = [status for status in tweepy.Cursor(api.search, q=query_list[index],lang='en',tweet_mode='extended').items(max_tweets)]
 	file = open(file_list[index],'w')
 	csvwriter = csv.writer(file)
-	outtweets = [[tweet.id_str,tweet.created_at, tweet.text.encode("utf-8")] for tweet in searched_tweets]
+	outtweets = [[tweet.full_text.encode("utf-8")] for tweet in searched_tweets]
 	for item in outtweets:
-		csvwriter.writerow(["id","created_at","text"])
 		csvwriter.writerows(outtweets)
 	index+=1
-
 
 
 

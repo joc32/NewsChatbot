@@ -21,17 +21,17 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 max_tweets=500 
 
 #list of 10 articles that are grabbed from Twitter. With specific filters. 
-query = 'https://twitter.com/CNN/status/1008013167140753413 -filter:videos -filter:retweets -filter:images'
-query1 = 'https://twitter.com/FoxNews/status/1007597853802487808 -filter:videos -filter:retweets -filter:images'
-query2 = 'https://twitter.com/cnnbrk/status/1006473764018835457 -filter:videos -filter:retweets -filter:images'
-query3 = 'https://twitter.com/cnnbrk/status/1006473156868091904 -filter:videos -filter:retweets -filter:images'
-query4 = 'https://twitter.com/cnnbrk/status/1006454182596042752 -filter:videos -filter:retweets -filter:images'
+query = 'https://twitter.com/cnnbrk/status/1009478800416083968 -filter:videos -filter:retweets -filter:images'
+query1 = 'https://twitter.com/cnnbrk/status/1009518811618402306 -filter:videos -filter:retweets -filter:images'
+query2 = 'https://twitter.com/cnnbrk/status/1010231521784025091 -filter:videos -filter:retweets -filter:images'
+query3 = 'https://twitter.com/cnnbrk/status/1010878074051809280 -filter:videos -filter:retweets -filter:images'
+query4 = 'https://twitter.com/cnnbrk/status/1011749396155858944 -filter:videos -filter:retweets -filter:images'
 
-query5 = 'https://twitter.com/cnnbrk/status/1006473764018835457 -filter:videos -filter:retweets -filter:images'
-query6 = 'https://twitter.com/cnnbrk/status/1006708707554676736 -filter:videos -filter:retweets -filter:images'
-query7 = 'https://twitter.com/cnnbrk/status/1006473764018835457 -filter:videos -filter:retweets -filter:images'
-query8 = 'https://twitter.com/cnnbrk/status/1006473156868091904 -filter:videos -filter:retweets -filter:images'
-query9 = 'https://twitter.com/cnnbrk/status/1006454182596042752 -filter:videos -filter:retweets -filter:images'
+query5 = 'https://twitter.com/FoxNews/status/1011838534561378304 -filter:videos -filter:retweets -filter:images'
+query6 = 'https://twitter.com/FoxNews/status/1011950342962020357 -filter:videos -filter:retweets -filter:images'
+query7 = 'https://twitter.com/FoxNews/status/1012055217377030144 -filter:videos -filter:retweets -filter:images'
+query8 = 'https://twitter.com/FoxNews/status/1012060514569129984 -filter:videos -filter:retweets -filter:images'
+query9 = 'https://twitter.com/FoxNews/status/1012073583709913094 -filter:videos -filter:retweets -filter:images'
 
 
 #Initialisation of appropriate lists. One for Files one for Queries. 
@@ -44,7 +44,7 @@ for index in range(0,10):
 	searched_tweets = [status for status in tweepy.Cursor(api.search, q=query_list[index],lang='en',tweet_mode='extended').items(max_tweets)]
 	file = open(file_list[index],'w')
 	csvwriter = csv.writer(file)
-	outtweets = [[tweet.full_text.encode("utf-8")] for tweet in searched_tweets]
+	outtweets = [[tweet.full_text] for tweet in searched_tweets]
 	for item in outtweets:
 		csvwriter.writerows(outtweets)
 	index+=1

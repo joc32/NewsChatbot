@@ -6,3 +6,4 @@ RNN/
 data_cleaner.py
 __pycache__/
 cleaned_tweets/
+.DS_Store

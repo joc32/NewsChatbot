@@ -84,5 +84,16 @@ if argument == 'extend':
     pickle.dump(vocabulary,file_write) #write the newly extended dictionary into a pickle file, binary mode.
     file_write.close()
 
+#   block that prints the main vocabulary.
+if argument == 'print':
+    print('Printing the main dictionary') 
+    time.sleep(3)
+
+    pkl_file = open('vocabulary.pkl','rb') #open the main dictionary from pickle file
+    vocabulary = pickle.load(pkl_file)
+
+    print_sorted_dictionary(vocabulary) #and print it.
+
+
 
 

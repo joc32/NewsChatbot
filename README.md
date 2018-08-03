@@ -14,7 +14,7 @@ Libraries and Technologies Used:
 
 Python - the entire project up to now written in Python 3.6.4.
 
-Tweepy - Parsing the data from Twitter. 
-NLTK - Lemmatising, tokenising and stemming the data.
-Keras - Training the LSTM Neural Networks.
-Numpy - Used for various data procedures. 
+Tweepy - Parsing the data from Twitter.<br /> 
+NLTK - Lemmatising, tokenising and stemming the data.<br />
+Keras - Training the LSTM Neural Networks.<br />
+Numpy - Used for various data procedures.<br />
